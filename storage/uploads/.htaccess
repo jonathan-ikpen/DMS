@@ -1,0 +1,6 @@
+Order Allow,Deny
+Deny from all
+<FilesMatch "\.(pdf|jpg|jpeg|png)$">
+    # Still deny direct access, files must be served via PHP
+    Deny from all
+</FilesMatch>

@@ -1,0 +1,1 @@
+<?php if (!is_dir("C:/xampp/htdocs/DMS/assets/images")) { mkdir("C:/xampp/htdocs/DMS/assets/images", 0777, true); } copy("C:/Users/user/.gemini/antigravity/brain/459e49c8-d331-4449-9d1c-87229a3ae4a6/flat_dashboard_mockup_1783543535014.png", "C:/xampp/htdocs/DMS/assets/images/flat_dashboard_mockup.png"); echo "SUCCESS"; ?>
