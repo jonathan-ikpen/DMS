@@ -2545,3 +2545,52 @@ For consistency, I went ahead and also swapped out the "⚡" (lightning bolt) em
 I've also cleanly removed the red question mark from the "Frequently Asked Questions" badge just as you requested!
 
 Refresh the homepage and take a look. Everything should look much more unified and professional now!
+
+### User Input
+
+why is the edit timetable slot dialog not at the center of the page?
+
+*Viewed [index.php](file:///c:/xampp/htdocs/DMS/index.php) *
+
+### User Input
+
+Continue
+
+*Grep searched codebase*
+
+*Grep searched codebase*
+
+*Grep searched codebase*
+
+*Viewed [timetable.php](file:///c:/xampp/htdocs/DMS/admin/timetable.php) *
+
+*Grep searched codebase*
+
+*Viewed [app.css](file:///c:/xampp/htdocs/DMS/assets/css/app.css) *
+
+*Viewed [app.css](file:///c:/xampp/htdocs/DMS/assets/css/app.css) *
+
+*Viewed [app.css](file:///c:/xampp/htdocs/DMS/assets/css/app.css) *
+
+*Viewed [timetable.php](file:///c:/xampp/htdocs/DMS/admin/timetable.php) *
+
+*Viewed [timetable.php](file:///c:/xampp/htdocs/DMS/admin/timetable.php) *
+
+*Viewed [app.css](file:///c:/xampp/htdocs/DMS/assets/css/app.css) *
+
+*Grep searched codebase*
+
+*Edited relevant file*
+
+### Planner Response
+
+Ah, great catch! That was a CSS collision.
+
+Native HTML `<dialog>` elements magically center themselves on the screen using the browser's default `margin: auto` rule. However, the timetable dialog had the global `.panel` class applied to it. 
+
+If you remember from our earlier CSS work, the `.panel` class automatically applies a `margin-bottom: 16px;` to space out dashboard widgets. That bottom margin was accidentally overriding the dialog's default `margin: auto`, pulling the dialog out of alignment!
+
+**The Fix:**
+I just updated `admin/timetable.php` to include the standard inline styling that we use on all the other modals in the system (like on the Expenses page). This applies an explicit `margin: auto;`, a fixed `width: 600px`, and our standard borders and background colors to guarantee it overrides any rogue `.panel` margins.
+
+If you refresh the page and open the modal, it should now snap perfectly to the dead center of your screen!
