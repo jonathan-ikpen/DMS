@@ -1,4 +1,4 @@
-USE department_management_system;
+
 
 INSERT INTO departments (name, code, institution) VALUES
 ('Computer Science Department', 'CSC', 'Petroleum Training Institute');
