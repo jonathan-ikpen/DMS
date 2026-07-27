@@ -49,7 +49,7 @@ include __DIR__ . '/../components/header.php';
         </div>
         
         <section class="panel">
-            <h2>Add Qualification</h2>
+            <h3>Add Qualification</h3>
             <form method="post" style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap; margin-top: 1rem;">
                 <?= csrf_field() ?>
                 <input type="hidden" name="action" value="add">
@@ -74,7 +74,7 @@ include __DIR__ . '/../components/header.php';
         </section>
 
         <section class="panel" style="margin-top: 2rem;">
-            <h2>Existing Qualifications</h2>
+            <h3>Existing Qualifications</h3>
             <?php if (empty($qualifications)): ?>
                 <p style="margin-top: 1rem; color: var(--text-muted);">No qualifications added yet.</p>
             <?php else: ?>
