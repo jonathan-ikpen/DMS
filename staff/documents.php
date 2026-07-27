@@ -65,7 +65,7 @@ foreach ($uploads->fetchAll() as $up) {
 }
 
 $pageTitle = 'Documents';
-$items = ['Dashboard' => 'staff/dashboard.php', 'Profile' => 'staff/profile.php', 'Qualifications' => 'staff/qualifications.php', 'Documents' => 'staff/documents.php', 'Courses' => 'staff/courses.php', 'Timetable' => 'staff/timetable.php', 'Announcements' => 'staff/announcements.php'];
+$items = ['Dashboard' => 'staff/dashboard.php', 'Profile' => 'staff/profile.php', 'Qualifications' => 'staff/qualifications.php', 'Courses' => 'staff/courses.php', 'Timetable' => 'staff/timetable.php', 'Documents' => 'staff/documents.php', 'Announcements' => 'staff/announcements.php'];
 include __DIR__ . '/../components/header.php';
 ?>
 <div class="app-layout">
