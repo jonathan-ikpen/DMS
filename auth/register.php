@@ -61,5 +61,27 @@ include __DIR__ . '/../components/header.php';
         </div>
         <button class="button button-primary" type="submit">Submit registration</button>
     </form>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const roleSelect = document.querySelector('[data-role-select]');
+        const studentFields = document.querySelectorAll('[data-student-field]');
+        const staffFields = document.querySelectorAll('[data-staff-field]');
+
+        function toggleFields() {
+            const isStaff = roleSelect.value === 'staff';
+            
+            studentFields.forEach(label => {
+                label.style.display = isStaff ? 'none' : '';
+            });
+            
+            staffFields.forEach(label => {
+                label.style.display = !isStaff ? 'none' : '';
+            });
+        }
+
+        roleSelect.addEventListener('change', toggleFields);
+        toggleFields(); // Initialize on page load
+    });
+    </script>
 </section>
 <?php include __DIR__ . '/../components/footer.php'; ?>
