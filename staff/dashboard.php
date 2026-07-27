@@ -2,6 +2,21 @@
 require_once __DIR__ . '/../middleware/auth.php';
 require_once __DIR__ . '/../services/DashboardService.php';
 $user = require_auth(['staff']);
+
+$staffStmt = $pdo->prepare('SELECT id FROM staff WHERE user_id = ?');
+$staffStmt->execute([$user['id']]);
+$staffRecord = $staffStmt->fetch();
+$staffId = $staffRecord ? (int)$staffRecord['id'] : 0;
+
+$today = date('l');
+$classesTodayStmt = $pdo->prepare('SELECT COUNT(*) FROM timetable WHERE staff_id = ? AND day_of_week = ?');
+$classesTodayStmt->execute([$staffId, $today]);
+$classesToday = (int)$classesTodayStmt->fetchColumn();
+
+$qualStmt = $pdo->prepare('SELECT COUNT(*) FROM qualifications WHERE staff_id = ?');
+$qualStmt->execute([$staffId]);
+$qualCount = (int)$qualStmt->fetchColumn();
+
 $service = new DashboardService($pdo);
 $timetable = $service->upcomingTimetable((int) $user['id'], 'staff');
 $announcements = $service->announcements();
@@ -12,6 +27,7 @@ $items = [
     'Qualifications' => 'staff/qualifications.php',
     'Courses' => 'staff/courses.php',
     'Timetable' => 'staff/timetable.php',
+    'Documents' => 'staff/documents.php',
     'Announcements' => 'staff/announcements.php',
 ];
 include __DIR__ . '/../components/header.php';
@@ -23,8 +39,8 @@ include __DIR__ . '/../components/header.php';
         <div class="stats-grid">
             <article><span>Assigned classes</span><strong><?= e((string) count($timetable)) ?></strong></article>
             <article><span>Announcements</span><strong><?= e((string) count($announcements)) ?></strong></article>
-            <article><span>CV</span><strong>Manage</strong></article>
-            <article><span>Qualifications</span><strong>Update</strong></article>
+            <article><span>Classes Today</span><strong><?= $classesToday ?></strong></article>
+            <article><span>Qualifications</span><strong><?= $qualCount ?></strong></article>
         </div>
         <section class="panel">
             <h2>Schedule</h2>

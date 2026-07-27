@@ -30,10 +30,20 @@ final class DashboardService
         $sql = 'SELECT timetable.*, courses.code, courses.title, staff.staff_no
                 FROM timetable
                 INNER JOIN courses ON courses.id = timetable.course_id
-                LEFT JOIN staff ON staff.id = timetable.staff_id
-                ORDER BY FIELD(day_of_week, "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"), start_time
-                LIMIT 8';
-        return $this->pdo->query($sql)->fetchAll();
+                LEFT JOIN staff ON staff.id = timetable.staff_id';
+                
+        $params = [];
+        
+        if ($role === 'staff' && $userId !== null) {
+            $sql .= ' WHERE timetable.staff_id = (SELECT id FROM staff WHERE user_id = ?)';
+            $params[] = $userId;
+        }
+        
+        $sql .= ' ORDER BY FIELD(day_of_week, "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"), start_time LIMIT 8';
+        
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute($params);
+        return $statement->fetchAll();
     }
 
     private function count(string $table): int

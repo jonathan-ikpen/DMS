@@ -48,7 +48,7 @@ $statement = $pdo->prepare('SELECT qualifications.* FROM qualifications INNER JO
 $statement->execute([$user['id']]);
 $qualifications = $statement->fetchAll();
 $pageTitle = 'Qualifications';
-$items = ['Dashboard' => 'staff/dashboard.php', 'Profile' => 'staff/profile.php', 'Qualifications' => 'staff/qualifications.php', 'Courses' => 'staff/courses.php', 'Timetable' => 'staff/timetable.php', 'Announcements' => 'staff/announcements.php'];
+$items = ['Dashboard' => 'staff/dashboard.php', 'Profile' => 'staff/profile.php', 'Qualifications' => 'staff/qualifications.php', 'Courses' => 'staff/courses.php', 'Timetable' => 'staff/timetable.php', 'Documents' => 'staff/documents.php', 'Announcements' => 'staff/announcements.php'];
 include __DIR__ . '/../components/header.php';
 ?>
 <div class="app-layout">
