@@ -23,13 +23,7 @@ $user = function_exists('current_user') ? current_user() : null;
 <body class="<?= e($bodyClass) ?>">
 <header class="topbar">
         <a class="brand" href="<?= url('index.php') ?>">
-            <span style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--accent); border-radius: 9999px; color: #fff;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                    <path d="M2 17l10 5 10-5"></path>
-                    <path d="M2 12l10 5 10-5"></path>
-                </svg>
-            </span>
+            <img src="<?= url('assets/logo/pti_logo_bg.png') ?>" alt="PTI Logo" style="height: 36px; width: auto; border-radius: 4px;">
             <span style="font-family: 'Anton', sans-serif; font-size: 20px; letter-spacing: 0.05em; color: var(--ink);">DMS</span>
         </a>
     <div style="display: flex; align-items: center; gap: 16px;">

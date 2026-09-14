@@ -944,3 +944,9 @@ th { color: var(--muted); font-size: 13px; }
     .footer-links { flex-direction: row; align-items: center; gap: 16px; }
     .footer-links strong { margin-left: 0; }
 }
+
+/* Hide default password reveal icon in Edge */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
