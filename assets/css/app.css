@@ -633,6 +633,10 @@ dialog input, dialog select, dialog textarea {
     border: 1px solid var(--line);
 }
 
+.app-layout textarea, .auth-card textarea, dialog textarea {
+    border-radius: var(--radius);
+}
+
 .app-layout input:focus, .app-layout select:focus, .app-layout textarea:focus,
 .auth-card input:focus, .auth-card select:focus, .auth-card textarea:focus,
 dialog input:focus, dialog select:focus, dialog textarea:focus {
